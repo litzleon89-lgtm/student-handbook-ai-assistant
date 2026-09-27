@@ -8,11 +8,12 @@ from app.models import Chunk
 
 
 def normalize_pdf_text(text: str) -> str:
+    text = text.replace("\u00c2\u00a0", " ").replace("\u00a0", " ")
     normalized_lines = []
     for line in text.splitlines():
         tokens = line.split()
         single_character_tokens = sum(len(token) == 1 for token in tokens)
-        if len(tokens) >= 4 and single_character_tokens / len(tokens) >= 0.5:
+        if len(tokens) >= 3 and single_character_tokens / len(tokens) >= 0.5:
             line = re.sub(r"(?<=\S) (?=\S)", "", line)
             line = re.sub(r" {2,}", " ", line)
         normalized_lines.append(line)

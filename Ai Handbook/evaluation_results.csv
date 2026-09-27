@@ -1,353 +1,52 @@
-question,source,answer
-What outcomes should I expect from the bootcamp?,Page 4,"[Page 4] 0 4
-At Zaio, our primary goal is to equip you with the skills and knowledge
-you need to excel in the field of programming. By the end of this
-bootcamp, you can expect to:
-Master Programming Fundamentals: Develop a solid foundation in
-programming languages, algorithms, data structures, and problem-
-solving techniques.
-Build Real-World Agentic Projects: Gain hands-on experience by working
-on projects that simulate real industry scenarios, allowing you to
-showcase your abilities to potential employers.
-Collaborate Effectively: Learn how to work efficiently in a team,
-participate in collaborative coding environments, and communicate your
-ideas effectively.
-Receive Career Support: Benefit from resume building, interview
-preparation, and job placement assistance to help you launch your career
-in tech.
-We are committed to your success and will do everything we can to
-support you throughout
+question,source,answer,answer_mode
+What outcomes should I expect from the bootcamp?,Page 4,"According to Page 4 of the handbook, you can expect to Master Programming Fundamentals, Build Real-World Agentic Projects, Collaborate Effectively, and Receive Career Support by the end of the bootcamp.",ollama_llm
+What laptop hardware and internet connection do I need?,Page 5,"To effectively participate in a full-stack web development course, you will need:
 
-[Page 2] Welcome
-0 3 .
-Table of Contents
-0 2
-The Team
-0 9 .
-CONTENTS
-Outcomes
-0 4 .
-Fees
-1 0 .
-The Sprints
-0 5 .
-Communications Channel
-1 2 .
-Tutor Support
-1 3 .
-How This Bootcamp 
-Will Work
-0 6 .
-Your Final Portfolio
-1 4 .
-Live Classes
-0 8 .
-Placement And Career
-1 5 ."
-What laptop hardware and internet connection do I need?,Page 5,"[Page 5] ed internet connection is essential.
-Recommended minimum speeds are 10 Mbps for download and 3
-Mbps for upload.
-If you are looking to buy a laptop and are confused - please email
-asif@zaio.io for guidance.
-HARDWARE
-REQUIREMENTS
+1. Laptop hardware:
+   - Operating System: A current Windows-based laptop with PowerShell or a Mac with Terminal.
+   - Processor: A dual-core Intel i5, AMD 3000+ (CPU), or Apple M1 processor, or greater in power.
+   - Memory (RAM): At least 4 or 8 GB of RAM is required.
+   - Storage: A solid-state drive (SSD) with at least 256 GB of storage.
 
-[Page 5] 0 4
-To effectively participate in a full-stack web development course, it's
-essential to have a laptop that meets certain minimum hardware
-requirements to ensure smooth operation of development tools and
-environments. Here are the recommended specifications:
-Operating System:
-A current Windows-based laptop with PowerShell or a Mac with
-Terminal. 
-Processor:
-A dual-core Intel i5, AMD 3000+ (CPU), or Apple M1 processor, or
-greater in power. 
-Memory (RAM):
-At least 4 or 8 GB of RAM is required for efficient multitasking and
-handling of development environments. 
-Storage:
-A solid-state drive (SSD) with at least 256 GB of storage is
-recommended for faster data access and improved performance. 
-Internet Connection:
-For online classes, a high-speed internet connection is essential.
-Recommended minimum speeds are 10 Mbps for download and 3
-Mbps for upload.
-If you are looking to buy a laptop and"
-"What topics are covered in weeks 1-10, 11-15, 16-20, 21-24, and 25-30?",Page 6,"[Page 6] WeeksTopics coveredProjects   Outcomes 
-01 - 10
-Orientation
-HTML
-C S S
-G i t
-JavaScript  
-Tesla landing page
-Netflix landing
-page
-Youtube home
-page
-Twitter clone
-Google keep app
-Build your own HTML and
-CSS pages or websites
-Problem solve using
-programming
-Make your webpages
-interactive
-11 - 15
-ReactJS
-Redux
-Routing
- API calls
-Advanced React  
-Context 
-Hooks
-Google keep app
-Airbnb clone
-Amazon clone
-TicTacToe game
-Build dynamic web
-applications using ReactJS
-Connect to third party
-APIs
-16- 20
-NodeJS
-N P M
-Express
-RESTAPIs
-MongoDB
-Postman
-Async & Await
-E-commerce app
-Food Delivery app
-Connect your app to a
-database
-Query databases
-Connect your backend to
-third party APIs
-Build your own REST APIs
-21 - 24
-Cursor AI for vibe
-coding and
-building apps
-faster
-Python and OOP
-Cap Stone project
-Project will be
-revealed on the 20th
-week
-Problem solve using
-Python
-Build a fully working
-ReactJS +
+2. Internet Connection:
+   - A high-speed internet connection is essential.
+   - Recommended minimum speeds are 10 Mbps for download and 3 Mbps for upload.",ollama_llm
+"What technologies are taught in the curriculum sprint plan, from HTML and CSS to React, NodeJS, Python, and AI agents?",Page 6,"Based on the provided handbook context, the technologies taught in the curriculum sprint plan are:
 
-[Page 11] 1 0
-We will have live classes every 6 pm - 8 pm on Mondays and 9 am - 11 am
-on Fridays for the first 12 weeks of the bootcamp which will then reduce
-to 1 live class every Monday at 6 pm - 8 pm.
-All live classes will be recorded. For the students who are not able to
-attend a specific live classes and studying at another time, we will have
-tutors available on standby to assist when you have any doubts.
-These live classes will be used to recap what was covered during the
-week on the LMS, make sure you complete your work before coming to
-class.
-LIVE CLASSES"
-When does the bootcamp start and how long does it run?,Page 7,"[Page 7] 0 6
-The bootcamp is scheduled to run from the 27 August 2025 for 7 months.
-Please take note of the following important dates: 
-Orientation Day: 30 October 2025 , 10 am 
-Topic: October Bootcamp Orientation
-Time: Oct 30, 2025 10:00 AM Harare, Pretoria
-Join Zoom Meeting
-https://us06web.zoom.us/j/82015450916?
-pwd=jYRQuYt5zIbKMqSuA7MIHR2YXMc7ay.1
-Meeting ID: 820 1545 0916
-Passcode: 215811
-Virtual Graduation Day: (Time and Date to be confirmed) 
-KEY DATES
+1. HTML
+2. CSS
+3. JavaScript
+4. ReactJS
+5. NodeJS
+6. Python
+7. OOP (Object-Oriented Programming)
+8. N8n (for building AI agents)
+9. Langchain (for building AI agents)
+10. MongoDB (for NodeJS projects)
+11. Express (for NodeJS projects)
+12. REST APIs (for NodeJS projects)
+13. Postman (for API testing)
+14. Git (for version control)
+15. Redux (for ReactJS projects)
+16. Routing (for ReactJS projects)
+17. Hooks (for ReactJS projects)
+18. Context (for ReactJS projects)
+19. Async & Await (for NodeJS projects)
+20. NPM (for NodeJS projects)
 
-[Page 17] ess.
-Remember, your commitment to payment by the specified deadline is
-crucial to securing your place in the bootcamp and ensuring a positive
-start to your learning experience."
-How do I get access to my learning calendar?,Page 10,"[Page 10] Make an account on www.zaio.io and add the email address you used to
-create the account on this google sheet, in the OCT25-FS/FSAI-BC sheet.
-(https://docs.google.com/spreadsheets/d/1SUZWT-
-b18BioOSX5s0sZHtRFws31DHXmQfNmrtw8NaQ/edit?usp=sharing). 
-We will enrol into the course and create the calendar for you.
-When your calendar is ready you will see a green ‘My schedule’ button on
-the top right of your dashboard. 
-Make sure your email address is on the sheet by Friday, 31 October 2025,
-4pm.
-HOW TO GET ACCESS TO YOUR
-CALENDER
-0 9
+Note that some of these technologies are mentioned as part of a specific tech stack (e.g. MERN Stack, ReactJS + NodeJS), while others are standalone technologies.",ollama_llm
+When does the bootcamp start and how long does it run?,Page 7,The bootcamp is scheduled to run from 27 August 2025 for 7 months.,ollama_llm
+How do I get access to my learning calendar?,Page 10,"According to [Page 8], you will see a green 'My schedule' button on the top right of your dashboard after you make an account on www.zaio.io and add your email address to the OCT25-FS/FSAI-BC sheet on the provided Google sheet.",ollama_llm
+When are the live classes and are they recorded?,Page 11,"According to the handbook, the live classes are held:
 
-[Page 8] 0 7
-As a distinguished participant in this program, your enrolment grants you
-access to our advanced Learning Management System. 
-This sophisticated platform has been curated to offer a comprehensive
-suite of resources and interactive modules, strategically designed to
-elevate your proficiency in full-stack AI engineering.
-Each student will have access to a calendar that has daily tasks setup for
-them. You will need to complete all the tasks on time to make sure you
-complete the bootcamp in 7.5 months.
-Below is an example what your calendar will look like on your dashboard.
-HOW THIS BOOTCAMP WILL WORK
-Daily tasks view when you 
-zoom into each calendar tile"
-When are the live classes and are they recorded?,Page 11,"[Page 11] 1 0
-We will have live classes every 6 pm - 8 pm on Mondays and 9 am - 11 am
-on Fridays for the first 12 weeks of the bootcamp which will then reduce
-to 1 live class every Monday at 6 pm - 8 pm.
-All live classes will be recorded. For the students who are not able to
-attend a specific live classes and studying at another time, we will have
-tutors available on standby to assist when you have any doubts.
-These live classes will be used to recap what was covered during the
-week on the LMS, make sure you complete your work before coming to
-class.
-LIVE CLASSES
+* Every Monday evening from 6 pm - 8 pm for the first 12 weeks, and then reduced to 1 live class every Monday at 6 pm - 8 pm.
+* Every Friday morning from 9 am - 11 am for the first 12 weeks.
 
-[Page 13] 1 2
-We will be using Google Classroom as the main LMS to post all recorded
-lectures. 
-Assignments will also be shared on Google Classroom and they will have
-to be submitted on Google classroom and they will be marked by your
-allocated Tutor.
-You will be added to Google classroom after the orientation meeting - an
-invitation link will be send to your email address and you will have to join
-that class room using the link.
-GOOGLE CLASSROOM"
-What tutor support is available if I cannot attend a live class?,Page 11,"[Page 11] 1 0
-We will have live classes every 6 pm - 8 pm on Mondays and 9 am - 11 am
-on Fridays for the first 12 weeks of the bootcamp which will then reduce
-to 1 live class every Monday at 6 pm - 8 pm.
-All live classes will be recorded. For the students who are not able to
-attend a specific live classes and studying at another time, we will have
-tutors available on standby to assist when you have any doubts.
-These live classes will be used to recap what was covered during the
-week on the LMS, make sure you complete your work before coming to
-class.
-LIVE CLASSES
+All live classes are recorded.",ollama_llm
+What tutor support is available if I cannot attend a live class?,Page 11,"According to page 20, if you cannot attend a live class, you can book a video call with a tutor using the Calendly links provided during orientation and on the Discord channel, or you can book a tutor directly from the ZAIO dashboard.",ollama_llm
+What are the bootcamp fees and payment deadlines?,Page 16,"According to the handbook, the total fees for the Bootcamp are R 38,950. The payment deadline is the orientation day, which is scheduled for 30 October 2025.",ollama_llm
+What career and placement support does Zaio provide?,Page 4,"Zaio provides career support, including resume building, interview preparation, and job placement assistance, to help students launch their careers in tech.",ollama_llm
+What communication channels should students use?,Page 18,"According to the handbook, students should use the following communication channels:
 
-[Page 2] Welcome
-0 3 .
-Table of Contents
-0 2
-The Team
-0 9 .
-CONTENTS
-Outcomes
-0 4 .
-Fees
-1 0 .
-The Sprints
-0 5 .
-Communications Channel
-1 2 .
-Tutor Support
-1 3 .
-How This Bootcamp 
-Will Work
-0 6 .
-Your Final Portfolio
-1 4 .
-Live Classes
-0 8 .
-Placement And Career
-1 5 ."
-What are the bootcamp fees and payment deadlines?,Page 16,"[Page 16] 1 6
-We understand the importance of financial planning, and we aim to
-make the payment process as seamless as possible. Please take note of
-the following information regarding fees for the Bootcamp:
-Total Fees: R 38,950
-Payment Deadline: Fees must be paid in full before the orientation day,
-which is scheduled for 30 October 2025.
-Payment Options:
-Option 1: Upfront Payment
-You can pay the full amount upfront using the Zaio bank account details
-from your consultant. 
-Option 2: Financing with Capitec and Manati
-If you prefer a financing option, we have partnered with 2 partners
-(Capitec and Manati) to facilitate the process of securing a study loan.
-They assist numerous students in obtaining loans, making education
-more accessible.
-If you choose this option, it is crucial to respond promptly to
-communications, keep a close eye on your emails, and cooperate with
-Capitec throughout the
-
-[Page 17] 1 7
-Notification from Financing Partners
-If you opt for Capitec education financing, you should expect to be
-contacted within 24 hours of receiving your acceptance letter. This
-communication will guide you through the steps of securing a study
-loan.If you have not been contacted by Capitec, please email:
-abi@zaio.io, Should your Capitec loan fail, we will then take your
-application to Manati who are more lenient when giving out study loans.
-We understand that managing finances is a significant aspect of your
-education journey. If you encounter any challenges or have specific
-questions regarding fees and payment, please do not hesitate to reach
-out to abi@zaio.io. We are here to assist you in ensuring a smooth and
-successful payment process.
-Remember, your commitment to payment by the specified deadline is
-crucial to securing your place in the bootcamp and ensuring a positive
-start to"
-What career and placement support does Zaio provide?,Page 4,"[Page 4] 0 4
-At Zaio, our primary goal is to equip you with the skills and knowledge
-you need to excel in the field of programming. By the end of this
-bootcamp, you can expect to:
-Master Programming Fundamentals: Develop a solid foundation in
-programming languages, algorithms, data structures, and problem-
-solving techniques.
-Build Real-World Agentic Projects: Gain hands-on experience by working
-on projects that simulate real industry scenarios, allowing you to
-showcase your abilities to potential employers.
-Collaborate Effectively: Learn how to work efficiently in a team,
-participate in collaborative coding environments, and communicate your
-ideas effectively.
-Receive Career Support: Benefit from resume building, interview
-preparation, and job placement assistance to help you launch your career
-in tech.
-We are committed to your success and will do everything we can to
-support you throughout
-
-[Page 24] 2 4
-As you approach the end of our bootcamp handbook, we want to share
-the exciting prospects that await you.
-Zaio is committed to supporting students in securing placements
-within our network of partner companies, offering opportunities for
-Junior Developer roles or paid internships. Achieving a final mark of 70%
-and above significantly enhances your chances of placement.
-Paid internships go for 12 months, providing a monthly salary of R4000.
-Junior Developer full-time roles offer competitive salaries ranging from
-R10,000 to R15,000 per month.
-The focus in your initial year should not solely be on the salary; it's about
-establishing yourself in the tech industry. Exponential salary growth is
-anticipated from the second year onwards.
-Your primary objective should be accumulating experience at tech
-companies, setting the stage for sustained career growth.
-PLACEMENT & CAREER"
-What communication channels should students use?,Page 18,"[Page 18] an
-eye on your emails until the boot camp officially commences. After that,
-Discord will be the primary platform for all communication.
-COMMUNICATION
-CHANNELS
-
-[Page 18] 1 8
-As we gear up for an exciting coding journey together, we want to keep
-you informed about our communication channels.
-Before Orientation Day:
-Until the official start of the boot camp, all communication will take
-place via email. Please ensure that you regularly check your email inbox
-for important updates, announcements, and any pre-boot camp
-information.
-After Orientation Day:
-Once the boot camp officially begins, all ongoing communication will
-transition to our Discord channel. Discord will be our central hub for
-discussions, announcements, and real-time interaction. Make sure to
-join our Discord server to stay connected with your fellow participants
-and our team.
-We understand the importance of staying connected, so please keep an
-eye on your emails until the boot camp officially commences. After that,
-Discord will be the primary platform for all communication.
-COMMUNICATION"
+1. Email (before Orientation Day)
+2. Discord (after Orientation Day, starting from the official start of the boot camp)",ollama_llm

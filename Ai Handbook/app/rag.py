@@ -19,8 +19,17 @@ class RAGAssistant:
         self.threshold = threshold
 
     @classmethod
-    def from_index(cls, index_dir: Path = INDEX_DIR, model_name: str = "all-MiniLM-L6-v2") -> "RAGAssistant":
-        return cls(VectorStore.load(index_dir), SentenceTransformerEmbedder(model_name), create_generator())
+    def from_index(
+        cls,
+        index_dir: Path = INDEX_DIR,
+        model_name: str = "all-MiniLM-L6-v2",
+        generator: AnswerGenerator | None = None,
+    ) -> "RAGAssistant":
+        return cls(
+            VectorStore.load(index_dir),
+            SentenceTransformerEmbedder(model_name),
+            generator or create_generator(),
+        )
 
     @classmethod
     def build_index(cls, pdf_path: Path, index_dir: Path = INDEX_DIR, model_name: str = "all-MiniLM-L6-v2") -> int:

@@ -1,7 +1,10 @@
 import numpy as np
 
 from app.config import NOT_AVAILABLE
-from app.generator import ContextAnswerGenerator
+from openai import OpenAIError
+
+from app import generator as generator_module
+from app.generator import ContextAnswerGenerator, OpenAIAnswerGenerator
 from app.models import Chunk, SearchResult
 from app.rag import RAGAssistant
 from app.vector_store import VectorStore
@@ -45,3 +48,67 @@ def test_offline_generator_keeps_adjacent_chunks_from_same_page():
     answer = ContextAnswerGenerator().generate("What hardware do I need?", results)
     assert "CPU and memory" in answer
     assert "Storage and internet" in answer
+
+
+def test_openai_errors_fall_back_to_retrieved_handbook_passage():
+    class FailingCompletions:
+        def create(self, **kwargs):
+            raise OpenAIError("temporarily unavailable")
+
+    class FakeClient:
+        class chat:
+            completions = FailingCompletions()
+
+    generator = OpenAIAnswerGenerator.__new__(OpenAIAnswerGenerator)
+    generator.client = FakeClient()
+    generator.model = "test-model"
+    result = SearchResult(Chunk("Bootcamp outcomes include programming fundamentals.", 4, "p4-c0"), 0.9)
+
+    assert generator.generate("What are the outcomes?", [result]) == "[Page 4] Bootcamp outcomes include programming fundamentals."
+
+
+def test_openai_generator_uses_retrieved_context():
+    class FakeCompletions:
+        def create(self, **kwargs):
+            assert kwargs["messages"][1]["content"].find("Attendance requires 80 percent") >= 0
+            return type("Response", (), {
+                "choices": [type("Choice", (), {"message": type("Message", (), {"content": "The requirement is 80 percent."})()})()]
+            })()
+
+    class FakeClient:
+        class chat:
+            completions = FakeCompletions()
+
+    generator = OpenAIAnswerGenerator.__new__(OpenAIAnswerGenerator)
+    generator.client = FakeClient()
+    generator.model = "test-model"
+    result = SearchResult(Chunk("Attendance requires 80 percent participation.", 12, "p12-c0"), 0.9)
+
+    assert generator.generate("What is attendance?", [result]) == "The requirement is 80 percent."
+    assert generator.last_used_fallback is False
+
+
+def test_ollama_provider_uses_local_openai_compatible_endpoint(monkeypatch):
+    monkeypatch.setattr(generator_module, "LLM_PROVIDER", "ollama")
+    monkeypatch.setattr(generator_module, "OLLAMA_BASE_URL", "http://localhost:11434/")
+    monkeypatch.setattr(generator_module, "OLLAMA_MODEL", "llama3.2:3b")
+
+    generator = generator_module.create_generator()
+
+    assert isinstance(generator, OpenAIAnswerGenerator)
+    assert generator.model == "llama3.2:3b"
+    assert str(generator.client.base_url).rstrip("/").endswith("localhost:11434/v1")
+
+
+def test_chroma_vector_store_persists_and_reloads(tmp_path):
+    chunks = [Chunk("Attendance requires 80 percent participation.", 12, "p12-c0")]
+    store = VectorStore(chunks, np.array([[1.0, 0.0]]))
+    store.save(tmp_path)
+
+    loaded = VectorStore.load(tmp_path)
+    results = loaded.search(np.array([1.0, 0.0]), top_k=1)
+
+    assert len(results) == 1
+    assert results[0].chunk.text == chunks[0].text
+    assert results[0].chunk.page == 12
+    assert results[0].score > 0.99

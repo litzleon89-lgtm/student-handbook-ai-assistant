@@ -1,13 +1,30 @@
 from pathlib import Path
 
 from fastapi import FastAPI, HTTPException
+from fastapi.openapi.docs import get_swagger_ui_html
 from pydantic import BaseModel, Field
+from starlette.responses import FileResponse, HTMLResponse
 
-from app.config import HANDBOOK_PATH, INDEX_DIR
+from app.config import HANDBOOK_PATH, INDEX_DIR, LLM_ENABLED, LLM_PROVIDER
 from app.rag import RAGAssistant
 
-app = FastAPI(title="Student Handbook AI Assistant", version="1.0.0")
+app = FastAPI(title="Student Handbook AI Assistant", version="1.0.0", docs_url=None)
 assistant: RAGAssistant | None = None
+FAVICON_PATH = Path(__file__).parent / "static" / "favicon.svg"
+
+
+@app.get("/favicon.svg", include_in_schema=False)
+def favicon() -> FileResponse:
+    return FileResponse(FAVICON_PATH, media_type="image/svg+xml")
+
+
+@app.get("/docs", include_in_schema=False)
+def docs() -> HTMLResponse:
+    return get_swagger_ui_html(
+        openapi_url=app.openapi_url,
+        title=f"{app.title} - API docs",
+        swagger_favicon_url="/favicon.svg",
+    )
 
 
 class AskRequest(BaseModel):
@@ -31,7 +48,15 @@ def get_assistant() -> RAGAssistant:
 
 @app.get("/health")
 def health() -> dict[str, str]:
-    return {"status": "ok", "index": "ready" if INDEX_DIR.exists() else "missing"}
+    return {
+        "status": "ok",
+        "index": "ready" if INDEX_DIR.exists() else "missing",
+        "answer_mode": (
+            "ollama_local_with_fallback" if LLM_PROVIDER == "ollama"
+            else "openai_configured_with_fallback" if LLM_ENABLED
+            else "passage_only_no_llm"
+        ),
+    }
 
 
 @app.post("/ask", response_model=AskResponse)

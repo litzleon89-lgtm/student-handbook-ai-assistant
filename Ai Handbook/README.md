@@ -9,10 +9,10 @@ Source handbook: `data/handbook.pdf` (October 2025 Fullstack AI Engineer Bootcam
 - Extracts text from every PDF page with `pypdf`.
 - Splits text into overlapping, page-aware chunks.
 - Generates `all-MiniLM-L6-v2` sentence embeddings.
-- Stores vectors in a local NumPy vector store with JSON chunk metadata.
+- Stores embeddings and page metadata in a persistent local ChromaDB collection using cosine similarity.
 - Retrieves the most relevant chunks using cosine similarity.
-- Uses an OpenAI chat model when `OPENAI_API_KEY` is configured.
-- Uses a safe offline passage-only fallback when no API key is configured.
+- Uses OpenAI Chat Completions or a free local Ollama model for answer generation.
+- Uses a safe offline passage-only fallback when no API key is configured. This fallback is useful for local testing but does **not** satisfy the LLM-generation requirement by itself.
 - Returns a fixed not-available response when retrieval is below the relevance threshold.
 - Provides JSON requests and responses for future n8n integration.
 
@@ -34,14 +34,31 @@ Source handbook: `data/handbook.pdf` (October 2025 Fullstack AI Engineer Bootcam
    python -m scripts.ingest
    ```
 
-   The embedding model is downloaded on first use. To use another model, set `EMBEDDING_MODEL`.
+   The embedding model is downloaded on first use. ChromaDB writes its persistent collection under `artifacts/index/`. To use another model, set `EMBEDDING_MODEL`.
 
-4. Optional: create `.env` with an OpenAI key for LLM-generated answers:
+4. Choose an answer provider in `.env`. For OpenAI, set `LLM_PROVIDER=openai` and provide your own API key. Never commit `.env` or share the key:
 
    ```text
-   OPENAI_API_KEY=your-key
+   OPENAI_API_KEY=your-private-key
    OPENAI_MODEL=gpt-4o-mini
+   LLM_PROVIDER=openai
    ```
+
+   **Free local alternative:** install [Ollama](https://ollama.com/download). Open a new terminal and download the model:
+
+   ```powershell
+   ollama pull llama3.2:3b
+   ```
+
+   Set these values in `.env` instead of the OpenAI settings (you do not need an OpenAI key):
+
+   ```text
+   LLM_PROVIDER=ollama
+   OLLAMA_BASE_URL=http://localhost:11434
+   OLLAMA_MODEL=llama3.2:3b
+   ```
+
+   The Ollama installer normally runs its local service in the background. If it is not running, start `ollama serve` in a separate terminal and leave it open. Then start or restart this API. Ollama runs the model on your computer and does not use OpenAI credits. Model download and inference require disk space, memory, and compute. `GET /health` reports `ollama_local_with_fallback`, `openai_configured_with_fallback`, or `passage_only_no_llm`. If a configured provider is unavailable, the assistant safely returns retrieved handbook passages.
 
 5. Start the API:
 
@@ -65,7 +82,7 @@ Response:
 {"answer":"...","source":"Page 11"}
 ```
 
-Invalid JSON or missing/empty questions receive a 4xx response. If the index has not been built, the API returns `503` with an actionable error. `GET /health` reports whether the index directory exists.
+Invalid JSON or missing/empty questions receive a 4xx response. If the index has not been built, the API returns `503` with an actionable error. `GET /health` reports index readiness and the active answer mode.
 ## Testing
 
 Run the unit tests:
@@ -74,7 +91,7 @@ Run the unit tests:
 pytest -q
 ```
 
-The tests cover chunking, page metadata, vector retrieval, not-available behavior, JSON responses, and invalid questions. They do not require a PDF, embedding download, or OpenAI key.
+The tests cover PDF text normalization, chunking, page metadata, Chroma persistence, vector retrieval, not-available behavior, JSON responses, invalid questions, and LLM error fallback. They do not require API credits, Ollama, or an OpenAI key.
 
 After indexing the real handbook, generate the required 10-question evidence table:
 
@@ -82,7 +99,7 @@ After indexing the real handbook, generate the required 10-question evidence tab
 python -m scripts.evaluate
 ```
 
-This writes `evaluation_results.csv` with `question`, `source`, and `answer` columns. Questions cover outcomes, laptop requirements, curriculum, dates, the learning calendar, classes, tutor support, fees, placement, and communications.
+This writes `evaluation_results.csv` with `question`, `source`, `answer`, and `answer_mode` columns. Questions cover outcomes, laptop requirements, curriculum, dates, the learning calendar, classes, tutor support, fees, placement, and communications. Use `python -m scripts.evaluate --passages-only` to produce the retrieval evidence without making paid API calls. The report marks answers as `openai_llm`, `ollama_llm`, or `retrieved_passage_fallback`.
 
 ## Project structure
 
@@ -92,5 +109,5 @@ data/                Put handbook.pdf here
 scripts/ingest.py    Extract, chunk, embed, and persist the index
 scripts/evaluate.py  Run ten documented questions
 tests/                Unit and API tests
-artifacts/index/     Generated vector database files (ignored by git)
+artifacts/index/     Persistent ChromaDB collection generated by ingestion
 ```
